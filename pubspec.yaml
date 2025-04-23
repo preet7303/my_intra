@@ -38,6 +38,8 @@ dependencies:
   carousel_slider: ^5.0.0
   video_player: ^2.9.5
   analyzer: ^7.4.2
+  chewie: ^1.11.3
+
 
 dev_dependencies:
   flutter_test:

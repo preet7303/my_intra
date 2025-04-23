@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:my_intra/custom_text.dart';
 import 'package:video_player/video_player.dart';
@@ -15,6 +16,7 @@ class PlayVideo extends StatefulWidget {
 
 class _PlayVideoState extends State<PlayVideo> {
   late VideoPlayerController _controller;
+  late ChewieController _chewieController;
   @override
   void initState() {
     // TODO: implement initState
@@ -25,6 +27,11 @@ class _PlayVideoState extends State<PlayVideo> {
 
       });
     });
+    _chewieController = ChewieController(
+      videoPlayerController: _controller,
+      autoPlay: true,
+      looping: true,
+    );
   }
 
   @override
@@ -64,7 +71,11 @@ class _PlayVideoState extends State<PlayVideo> {
               Center(
                 child: _controller.value.isInitialized?
                 AspectRatio(aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
+                  child: Chewie(controller: _chewieController,
+
+                  )
+                  // VideoPlayer(
+                  //     _controller),
                 ): CircularProgressIndicator(),
               ),
             ],
@@ -73,11 +84,11 @@ class _PlayVideoState extends State<PlayVideo> {
 
 
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        setState(() {
-          _controller.value.isPlaying? _controller.pause() : _controller.play();
-        });
-      }, child: Icon(_controller.value.isPlaying? Icons.pause: Icons.play_arrow),),
+      // floatingActionButton: FloatingActionButton(onPressed: (){
+      //   setState(() {
+      //     _controller.value.isPlaying? _controller.pause() : _controller.play();
+      //   });
+      // }, child: Icon(_controller.value.isPlaying? Icons.pause: Icons.play_arrow),),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_intra/custom_text.dart';
+import 'package:my_intra/home.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -65,7 +66,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=> SignupPage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
                 },
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
